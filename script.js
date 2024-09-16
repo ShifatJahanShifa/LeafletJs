@@ -54,6 +54,37 @@ var myIcon = L.icon({
 var marker=L.marker([23.6850, 90.3563], {icon: myIcon, draggable: true});
 var popup=marker.bindPopup("this is Dhaka, Bangladesh "+ marker.getLatLng()).openPopup();
 popup.addTo(map);
+var secondMarker=L.marker([22.6850, 91.3563], {icon: myIcon, draggable: true});
 
 // geojson
 console.log(marker.toGeoJSON());
+L.geoJSON(pointJSON).addTo(map);
+L.geoJSON(lineJSON).addTo(map);
+L.geoJSON(polygonJSON).addTo(map);
+
+L.geoJSON(polygonJSON, {
+    onEachFeature: function(feature,layer){
+        layer.bindPopup(`<b>name: </b>`+feature.properties.name)
+    }
+}).addTo(map);
+
+// layer controller
+var baseMaps = {
+    "OSM": osm,
+    "Water Color Map": watercolor,
+    "Google Street": googleStreets,
+    "Google Satellite": googleSat
+};
+
+var overlayMaps = {
+    "Source": marker,
+    "Sink" : secondMarker
+};
+
+L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(map);
+
+
+// map events
+// map.on('mousemove',function({
+
+// }))
