@@ -88,3 +88,79 @@ L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(map);
 // map.on('mousemove',function({
 
 // }))
+
+// add scale 
+L.control.scale({position: 'bottomright'}).addTo(map);
+
+// full screen view, khub ekta kaajer na
+var mapId=document.getElementById('map');
+function fullScreenView()
+{
+    mapId.requestFullscreen();
+}
+
+// add print option
+L.control.browserPrint({position: 'topleft', title: 'Print ...'}).addTo(map);
+
+// search by location
+L.Control.geocoder().addTo(map);
+
+// user's current position
+L.control.locate().addTo(map);
+
+// add heatmap
+console.log(addressPoints);
+var heat = L.heatLayer(addressPoints, {radius: 25}).addTo(map); 
+
+
+
+// geotiff layer
+// fetch('data/ECCO-Darwin_CO2_flux_202002.tif')
+//   .then(response => response.arrayBuffer())
+//   .then(arrayBuffer => {
+//     parseGeoraster(arrayBuffer).then(georaster => {
+//       console.log("georaster:", georaster);
+
+//       /*
+//           GeoRasterLayer is an extension of GridLayer,
+//           which means can use GridLayer options like opacity.
+
+//           Just make sure to include the georaster option!
+
+//           Optionally set the pixelValuesToColorFn function option to customize
+//           how values for a pixel are translated to a color.
+
+//           https://leafletjs.com/reference.html#gridlayer
+//       */
+//       var layer = new GeoRasterLayer({
+//           georaster: georaster,
+//           opacity: 0.7,
+//         //   pixelValuesToColorFn: values => values[0] === 42 ? '#ffffff' : '#000000',
+//         // pixelValuesToColorFn: function (value) {
+//         //     // if value
+//         //     if (value < 50) {
+//         //       return "yellow";
+//         //     } else if (value > 50 && value < 130) {
+//         //       return "green";
+//         //     } else if (value < 130 && value > 180) {
+//         //       return "#93E9BE";
+//         //     } else if (value == 190) {
+//         //       return "red";
+//         //     } else if (value == 200) {
+//         //       return "#966400";
+//         //     } else if (value == 210) {
+//         //       return "blue";
+//         //     } else if (value == 220) {
+//         //       return "#ffffff";
+//         //     } else {
+//         //       return "transparent";
+//         //     }
+//         //   },
+//           resolution: 128 // optional parameter for adjusting display resolution
+//       });
+//       layer.addTo(map);
+
+//       map.fitBounds(layer.getBounds());
+
+//   });
+// });
