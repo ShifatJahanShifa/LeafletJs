@@ -115,52 +115,52 @@ var heat = L.heatLayer(addressPoints, {radius: 25}).addTo(map);
 
 
 // geotiff layer
-// fetch('data/ECCO-Darwin_CO2_flux_202002.tif')
-//   .then(response => response.arrayBuffer())
-//   .then(arrayBuffer => {
-//     parseGeoraster(arrayBuffer).then(georaster => {
-//       console.log("georaster:", georaster);
+fetch('data/MiCASA_v1_ATMC_x3600_y1800_daily_20010101.tif')
+  .then(response => response.arrayBuffer())
+  .then(arrayBuffer => {
+    parseGeoraster(arrayBuffer).then(georaster => {
+      console.log("georaster:", georaster);
 
-//       /*
-//           GeoRasterLayer is an extension of GridLayer,
-//           which means can use GridLayer options like opacity.
+      /*
+          GeoRasterLayer is an extension of GridLayer,
+          which means can use GridLayer options like opacity.
 
-//           Just make sure to include the georaster option!
+          Just make sure to include the georaster option!
 
-//           Optionally set the pixelValuesToColorFn function option to customize
-//           how values for a pixel are translated to a color.
+          Optionally set the pixelValuesToColorFn function option to customize
+          how values for a pixel are translated to a color.
 
-//           https://leafletjs.com/reference.html#gridlayer
-//       */
-//       var layer = new GeoRasterLayer({
-//           georaster: georaster,
-//           opacity: 0.7,
-//         //   pixelValuesToColorFn: values => values[0] === 42 ? '#ffffff' : '#000000',
-//         // pixelValuesToColorFn: function (value) {
-//         //     // if value
-//         //     if (value < 50) {
-//         //       return "yellow";
-//         //     } else if (value > 50 && value < 130) {
-//         //       return "green";
-//         //     } else if (value < 130 && value > 180) {
-//         //       return "#93E9BE";
-//         //     } else if (value == 190) {
-//         //       return "red";
-//         //     } else if (value == 200) {
-//         //       return "#966400";
-//         //     } else if (value == 210) {
-//         //       return "blue";
-//         //     } else if (value == 220) {
-//         //       return "#ffffff";
-//         //     } else {
-//         //       return "transparent";
-//         //     }
-//         //   },
-//           resolution: 128 // optional parameter for adjusting display resolution
-//       });
-//       layer.addTo(map);
+          https://leafletjs.com/reference.html#gridlayer
+      */
+      var layer = new GeoRasterLayer({
+          georaster: georaster,
+          opacity: 0.5,
+        //   pixelValuesToColorFn: values => values[0] === 42 ? '#ffffff' : '#000000',
+        // pixelValuesToColorFn: function (value) {
+        //     // if value
+        //     if (value < 50) {
+        //       return "yellow";
+        //     } else if (value > 50 && value < 130) {
+        //       return "green";
+        //     } else if (value < 130 && value > 180) {
+        //       return "#93E9BE";
+        //     } else if (value == 190) {
+        //       return "red";
+        //     } else if (value == 200) {
+        //       return "#966400";
+        //     } else if (value == 210) {
+        //       return "blue";
+        //     } else if (value == 220) {
+        //       return "#ffffff";
+        //     } else {
+        //       return "transparent";
+        //     }
+        //   },
+          resolution: 128 // optional parameter for adjusting display resolution
+      });
+      layer.addTo(map);
 
-//       map.fitBounds(layer.getBounds());
+      map.fitBounds(layer.getBounds());
 
-//   });
-// });
+  });
+});
