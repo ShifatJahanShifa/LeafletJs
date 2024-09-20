@@ -57,16 +57,16 @@ popup.addTo(map);
 var secondMarker=L.marker([22.6850, 91.3563], {icon: myIcon, draggable: true});
 
 // geojson
-console.log(marker.toGeoJSON());
-L.geoJSON(pointJSON).addTo(map);
-L.geoJSON(lineJSON).addTo(map);
-L.geoJSON(polygonJSON).addTo(map);
+// console.log(marker.toGeoJSON());
+// L.geoJSON(pointJSON).addTo(map);
+// L.geoJSON(lineJSON).addTo(map);
+// L.geoJSON(polygonJSON).addTo(map);
 
-L.geoJSON(polygonJSON, {
-    onEachFeature: function(feature,layer){
-        layer.bindPopup(`<b>name: </b>`+feature.properties.name)
-    }
-}).addTo(map);
+// L.geoJSON(polygonJSON, {
+//     onEachFeature: function(feature,layer){
+//         layer.bindPopup(`<b>name: </b>`+feature.properties.name)
+//     }
+// }).addTo(map);
 
 // layer controller
 var baseMaps = {
